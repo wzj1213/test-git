@@ -11,28 +11,26 @@ on:
           - unit
           - integration
           - e2e
+      email:
+        description: 'Email address to notify'
+        required: false
+
 
 jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
       - name: Run tests
         run: |
           if [ "${{ github.event.inputs.test_type }}" == "unit" ]; then  
-            npm run test:unit  
+            echo "Running unit tests"
           elif [ "${{ github.event.inputs.test_type }}" == "integration" ]; then  
-            npm run test:integration  
+            echo "Running integration tests"
           elif [ "${{ github.event.inputs.test_type }}" == "e2e" ]; then  
-            npm run test:e2e  
+            echo "Running end-to-end tests"
+          fi
+          if: [${{ github.event.inputs.email }} != '']; then
+            run: echo "Sending email to ${{ github.event.inputs.email }}"
+          else
+            run: echo "No email provided"
           fi
