@@ -1,0 +1,38 @@
+name: Manual Trigger Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Type of test to run'
+        required: true
+        default: 'unit'
+        options:
+          - unit
+          - integration
+          - e2e
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: |
+          if [ "${{ github.event.inputs.test_type }}" == "unit" ]; then  
+            npm run test:unit  
+          elif [ "${{ github.event.inputs.test_type }}" == "integration" ]; then  
+            npm run test:integration  
+          elif [ "${{ github.event.inputs.test_type }}" == "e2e" ]; then  
+            npm run test:e2e  
+          fi
