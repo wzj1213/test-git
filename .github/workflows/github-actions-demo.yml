@@ -23,4 +23,5 @@ jobs:
         with:
           name: target
           path: |
-            target/*.jar
+            **/target/*.jar
+#            * 代表任意字符 ** 代表任意字符和目录
