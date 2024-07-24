@@ -33,4 +33,6 @@ jobs:
             echo "Sending email to ${{ github.event.inputs.email }}"
           else
             echo "No email provided"
-          fi  
+          fi
+      - name: Notify
+        run: echo "All tests have completed"
