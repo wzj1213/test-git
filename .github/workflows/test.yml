@@ -29,8 +29,8 @@ jobs:
           elif [ "${{ github.event.inputs.test_type }}" == "e2e" ]; then  
             echo "Running end-to-end tests"
           fi
-          if: [${{ github.event.inputs.email }} != '']; then
-            run: echo "Sending email to ${{ github.event.inputs.email }}"
+          if [ "${{ github.event.inputs.email }}" != "" ]; then  
+            echo "Sending email to ${{ github.event.inputs.email }}"
           else
-            run: echo "No email provided"
-          fi
+            echo "No email provided"
+          fi  
