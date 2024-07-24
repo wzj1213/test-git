@@ -24,11 +24,3 @@ jobs:
           name: target
           path: |
             target/*.jar
-#            存档代码覆盖率结果
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-coverage-report
-          path: |
-#            生成代码覆盖率报告
-            target/site/jacoco/index.html
