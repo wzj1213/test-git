@@ -7,10 +7,20 @@ on:
         description: 'Type of test to run'
         required: true
         default: 'unit'
+        type: choice
         options:
           - unit
           - integration
           - e2e
+      timeUnit:
+        description: '选择时间单位'
+        required: true
+        default: '分钟'
+        type: choice
+        options:
+          - '分钟'
+          - '小时'
+          - '天'
       email:
         description: 'Email address to notify'
         required: false
