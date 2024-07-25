@@ -62,17 +62,16 @@ jobs:
         run: echo "All tests have completed"
       - name: Generate and Display Build Output Table in Summary
         run: |
-          echo "| Root Project | Requested Tasks | Gradle Version | Build Outcome | Build Scan® |" > build_table.md
+          echo "| Email | Subject | From | Time | Type |" > build_table.md
           echo "|--------------|-----------------|----------------|---------------|-------------|" >> build_table.md
 
           build_output="Success" # This would typically be parsed from build_output.txt
           run_output="Success" # This would typically be parsed from run_output.txt
 
-          echo "| automq-kafka-enterprise | releaseTarGz | 8.6 | ![success](https://github.com/actions/checkout/workflows/Build/badge.svg) | NOT PUBLISHED |" >> build_table.md
-          echo "| automq-kafka-enterprise | build | 8.6 | ![success](https://github.com/actions/checkout/workflows/Build/badge.svg) | NOT PUBLISHED |" >> build_table.md
-          echo "| kafka | releaseTarGz | 8.6 | ![success](https://github.com/actions/checkout/workflows/Build/badge.svg) | NOT PUBLISHED |" >> build_table.md
+          echo "| wzj121388@gmail.com | 主题 | xxx@gmail.com | 2024年7月25日 | 收件箱 |" >> build_table.md
+
 
           cat build_table.md
 
-          echo "# Build Output Summary" >> $GITHUB_STEP_SUMMARY
+          echo "# CheckGmail" >> $GITHUB_STEP_SUMMARY
           cat build_table.md >> $GITHUB_STEP_SUMMARY
